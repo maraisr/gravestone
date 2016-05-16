@@ -20,7 +20,7 @@ function plumberError() {
 
 // Main tasks
 gulp.task('pug', function () {
-    return gulp.src('./app/pages/**/*.pug')
+    return gulp.src('./src/public/**/*.pug')
 		.pipe(plumberError())
         .pipe($.pug())
         .pipe(gulp.dest('./dist/'))
@@ -37,7 +37,7 @@ gulp.task('webpack', function (done) {
 });
 
 gulp.task('scss', function () {
-	return gulp.src('./app/assets/scss/entry.scss')
+	return gulp.src('./src/public/assets/scss/entry.scss')
 		.pipe(plumberError())
 		.pipe($.sass({
 			importer: require('sass-module-importer')()
@@ -72,8 +72,8 @@ gulp.task('watch', function () {
             poll: true
         }, webpackCallback);
 
-    gulp.watch('./app/pages/**/*.pug', ['pug']);
-	gulp.watch('./app/assets/scss/**/*.scss', ['scss']);
+    gulp.watch('./src/public/**/*.pug', ['pug']);
+	gulp.watch('./src/public/assets/scss/**/*.scss', ['scss']);
 });
 
 // Compile

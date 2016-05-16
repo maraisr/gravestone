@@ -2,7 +2,7 @@ var webpack = require('webpack');
 
 module.exports = {
     entry: [
-        './app/entry.ts'
+        './src/app/entry.ts'
     ],
     output: {
         path: './dist/',
@@ -14,7 +14,7 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.ts?$/, loader: 'ts' },
-            { test: /\.pug?$/, loader: 'pug-html', exclude: /(app\/pages)/}
+            { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/}
         ]
     },
     plugins: (function () {
