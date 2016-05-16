@@ -29,7 +29,7 @@ gulp.task('webpack', function (done) {
         });
 });
 
-gulp.task('default', function () {
+gulp.task('watch', function () {
     $.webpack(require('./webpack.config.js'))
         .watch({
             aggregateTimeout: 300,
@@ -46,3 +46,13 @@ gulp.task('build', function (done) {
 
     $.sequence(['webpack', 'pug'], done);
 });
+
+gulp.task('serve', function () {
+    $.connect.server({
+        livereload: false,
+        port: process.env.PORT || 3303,
+        root: ['./dist/']
+    });
+});
+
+gulp.task('default', ['watch', 'serve']);
