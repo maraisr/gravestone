@@ -1,22 +1,24 @@
 {
-  "scripts": {
-    "compile": "webpack --progress --colors -p"
-  },
-  "devDependencies": {
-    "file-loader": "^0.8.5",
-    "gulp": "^3.9.1",
-    "gulp-connect": "^4.0.0",
-    "gulp-env": "^0.4.0",
-    "gulp-load-plugins": "^1.2.2",
-    "gulp-pug": "^3.0.2",
-    "gulp-run-sequence": "^0.3.2",
-    "gulp-sequence": "^0.4.5",
-    "gulp-util": "^3.0.7",
-    "pug": "^2.0.0-alpha7",
-    "pug-html-loader": "^1.0.5",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
-    "vue": "^1.0.24",
-    "webpack": "^1.13.0"
-  }
+	"scripts": {
+		"compile": "webpack --progress --colors -p"
+	},
+	"dependencies": {
+		"vue": "^1.0.24"
+	},
+	"devDependencies": {
+		"file-loader": "^0.8.5",
+		"gulp": "^3.9.1",
+		"gulp-connect": "^4.0.0",
+		"gulp-env": "^0.4.0",
+		"gulp-load-plugins": "^1.2.2",
+		"gulp-pug": "^3.0.2",
+		"gulp-run-sequence": "^0.3.2",
+		"gulp-sequence": "^0.4.5",
+		"gulp-util": "^3.0.7",
+		"pug": "^2.0.0-alpha7",
+		"pug-html-loader": "^1.0.5",
+		"ts-loader": "^0.8.2",
+		"typescript": "^1.8.10",
+		"webpack": "^1.13.0"
+	}
 }

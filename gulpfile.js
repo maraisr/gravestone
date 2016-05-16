@@ -14,6 +14,7 @@ function webpackCallback(err, stats) {
     }));
 }
 
+// Main tasks
 gulp.task('pug', function () {
     return gulp.src('./app/pages/**/*.pug')
         .pipe($.pug())
@@ -29,6 +30,7 @@ gulp.task('webpack', function (done) {
         });
 });
 
+// Build process
 gulp.task('watch', function () {
     $.webpack(require('./webpack.config.js'))
         .watch({
@@ -39,6 +41,7 @@ gulp.task('watch', function () {
     gulp.watch('./app/pages/**/*.pug', ['pug']);
 });
 
+// Compile
 gulp.task('build', function (done) {
     $.env.set({
         NODE_ENV: 'production'
@@ -47,6 +50,7 @@ gulp.task('build', function (done) {
     $.sequence(['webpack', 'pug'], done);
 });
 
+// Dev server
 gulp.task('serve', function () {
     $.connect.server({
         livereload: false,
