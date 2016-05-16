@@ -36,6 +36,32 @@ gulp.task('webpack', function (done) {
         });
 });
 
+gulp.task('scss', function () {
+	return gulp.src('./app/assets/scss/entry.scss')
+		.pipe(plumberError())
+		.pipe($.sass({
+			importer: require('sass-module-importer')()
+		}))
+		.pipe($.postcss((function (res) {
+			res.push(require('autoprefixer')({
+				browsers: ['last 1 version'],
+				cascade: false,
+				add: true
+			}));
+
+			if (process.env.NODE_ENV == 'production') {
+				res.push(require('cssnano')({
+					discardComments: {
+						removeAll: true
+					}
+				}))
+			}
+
+			return res;
+		})([])))
+		.pipe(gulp.dest('./dist/'));
+});
+
 // Build process
 gulp.task('watch', function () {
     $.webpack(require('./webpack.config.js'))
@@ -45,6 +71,7 @@ gulp.task('watch', function () {
         }, webpackCallback);
 
     gulp.watch('./app/pages/**/*.pug', ['pug']);
+	gulp.watch('./app/assets/scss/**/*.scss', ['scss']);
 });
 
 // Compile
@@ -53,7 +80,7 @@ gulp.task('build', function (done) {
         NODE_ENV: 'production'
     });
 
-    $.sequence(['webpack', 'pug'], done);
+    $.sequence(['webpack', 'pug', 'scss'], done);
 });
 
 // Dev server
