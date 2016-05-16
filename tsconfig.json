@@ -5,6 +5,7 @@
         "sourceMap": true
     },
     "files": [
+        "typings/main.d.ts",
         "app/entry.ts"
     ]
 }

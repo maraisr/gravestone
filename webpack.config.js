@@ -1,9 +1,9 @@
 var webpack = require('webpack');
 
 module.exports = {
-    entry: {
-        main: './app/entry.ts'
-    },
+    entry: [
+        './app/entry.ts'
+    ],
     output: {
         path: './dist/',
         filename: '[name].js'
@@ -13,8 +13,8 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: /\.ts?$/, loader: 'ts-loader' },
-            { test: /\.pug?$/, loader: 'pug-html-loader' }
+            { test: /\.ts?$/, loader: 'ts' },
+            { test: /\.pug?$/, loader: 'pug-html' }
         ]
     },
     plugins: (function () {

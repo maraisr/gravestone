@@ -1,11 +1,10 @@
 declare var require: any;
 
 export class Test {
-    private name: String;
-
     constructor() {
-        this.name = 'World';
-
-        console.log(require('./views/entry.pug'));
+        new Vue({
+            el: '#app',
+            template: require('./views/entry.pug')
+        });
     }
 }
