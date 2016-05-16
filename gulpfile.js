@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     _ = require('lodash');
 
 function webpackCallback(err, stats) {
-    if (err) throw new gutil.PluginError("webpack", err);
+    if (err) throw $.notify(err);
 
     gutil.log("[webpack]", stats.toString({
         colours: true,
@@ -14,11 +14,17 @@ function webpackCallback(err, stats) {
     }));
 }
 
+function plumberError() {
+	return $.plumber({ errorHandler: $.notify.onError("Error: <%= error.message %>") })
+}
+
 // Main tasks
 gulp.task('pug', function () {
     return gulp.src('./app/pages/**/*.pug')
+		.pipe(plumberError())
         .pipe($.pug())
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist/'))
+		.pipe($.connect.reload());
 });
 
 gulp.task('webpack', function (done) {
@@ -53,7 +59,7 @@ gulp.task('build', function (done) {
 // Dev server
 gulp.task('serve', function () {
     $.connect.server({
-        livereload: false,
+        livereload: true,
         port: process.env.PORT || 3303,
         root: ['./dist/']
     });
