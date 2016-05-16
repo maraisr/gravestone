@@ -59,7 +59,9 @@ gulp.task('scss', function () {
 
 			return res;
 		})([])))
-		.pipe(gulp.dest('./dist/'));
+		.pipe($.rename({ basename: 'main' }))
+		.pipe(gulp.dest('./dist/'))
+		.pipe($.connect.reload());
 });
 
 // Build process
