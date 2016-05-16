@@ -1,9 +1,11 @@
+declare var require: any;
+
 export class Test {
-	private name:String;
+    private name: String;
 
-	constructor() {
-		this.name = 'test';
+    constructor() {
+        this.name = 'World';
 
-		console.log(`Hello, ${this.name}`);
-	}
+        console.log(require('./views/entry.pug'));
+    }
 }

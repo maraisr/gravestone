@@ -1,8 +1,12 @@
 {
-  "devDependencies": {
-    "clean-webpack-plugin": "^0.1.9",
-    "ts-loader": "^0.8.2",
-    "typescript": "^1.8.10",
-    "webpack": "^1.13.0"
-  }
+    "scripts": {
+        "compile": "webpack -p"
+    },
+    "devDependencies": {
+        "clean-webpack-plugin": "^0.1.9",
+        "pug-html-loader": "^1.0.5",
+        "ts-loader": "^0.8.2",
+        "typescript": "^1.8.10",
+        "webpack": "^1.13.0"
+    }
 }
