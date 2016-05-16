@@ -14,18 +14,11 @@ module.exports = {
     module: {
         loaders: [
             { test: /\.ts?$/, loader: 'ts' },
-            { test: /\.pug?$/, loader: 'pug-html' }
+            { test: /\.pug?$/, loader: 'pug-html', exclude: /(app\/pages)/}
         ]
     },
     plugins: (function () {
-        var returns = [
-            (function (clean) {
-                return new clean(['./dist'], {
-                    verbose: true,
-                    dry: false
-                })
-            })(require('clean-webpack-plugin'))
-        ];
+        var returns = [];
 
         if (process.env.NODE_ENV == 'production') {
             returns.push(new webpack.optimize.UglifyJsPlugin());
