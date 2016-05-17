@@ -20,7 +20,7 @@ function plumberError() {
 
 // Main tasks
 gulp.task('pug', function () {
-    return gulp.src('./src/public/**/*.pug')
+    return gulp.src('./src/public/**/[^_]*.pug')
 		.pipe(plumberError())
         .pipe($.pug())
         .pipe(gulp.dest('./dist/'))
