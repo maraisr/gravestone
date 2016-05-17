@@ -1,19 +1,18 @@
 declare var require: any;
 
-import * as Vue from 'vue';
+import Component from 'vue-class-component';
 
-class Test {
-    constructor() {
-        new Vue({
-            el: '#app',
-            template: require('./views/entry.pug'),
-            data: () => {
-                return {
-                    name: 'World'
-                }
-            }
-        });
-    }
+@Component({
+	el: () => {return '#app'},
+	template: require('./views/entry.pug')
+})
+
+class App {
+	data():any {
+		return {
+			name: 'World'
+		}
+	}
 }
 
-new Test();
+new App();

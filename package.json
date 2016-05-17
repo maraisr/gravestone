@@ -1,6 +1,7 @@
 {
 	"dependencies": {
 		"normalize-scss": "^4.2.1",
+		"vue-class-component": "^3.2.0",
 		"vue": "^1.0.24"
 	},
 	"devDependencies": {
