@@ -10,6 +10,7 @@
 	},
 	"files": [
 		"./typings/main.d.ts",
+		"./src/app/definitions/main.d.ts",
 		"./src/app/entry.ts"
 	]
 }

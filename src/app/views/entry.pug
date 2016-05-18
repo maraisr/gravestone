@@ -1,2 +1,7 @@
-h1.
-    Hello, {{name}}
+div
+	h1(v-if='loaded').
+		Hello, {{user.name}}
+	table
+		tr(v-for='item in transactions')
+			td {{item.payee}}
+			td {{item.amount}}
