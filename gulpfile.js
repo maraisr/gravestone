@@ -73,7 +73,7 @@ gulp.task('watch', function () {
         }, webpackCallback);
 
     gulp.watch('./src/public/**/*.pug', ['pug']);
-	gulp.watch('./src/public/assets/scss/**/*.scss', ['scss']);
+	gulp.watch('./src/public/assets/scss/**/*', ['scss']);
 });
 
 // Compile

@@ -1,34 +1,32 @@
-declare var require: any;
-
 import * as Vue from 'vue';
 
 import Component from 'vue-class-component';
 import * as VueResource from 'vue-resource';
+import * as VueRouter from 'vue-router';
 
 import Config from './config';
 
+import {State as tState} from './states/transactions/state.ts';
+
 Vue.use(VueResource);
+Vue.use(VueRouter);
+
 Vue.http.options.root = 'https://api.pocketsmith.com/v2';
 Vue.http.headers.common['Authorization'] = `Bearer ${Config.pocketsmithApi}`;
 
 @Component({
-	el: () => { return '#app' },
-	template: require('./views/entry.pug')
+	template: require('./views/entry.pug'),
+	replace: false
 })
 class App extends Vue {
-	private userData: any;
-
 	data(): any {
 		return {
-			loaded: false,
-			user: void 0,
-			transactions: []
+			loaded: false
 		};
 	}
 
 	ready(): void {
-		// Get the authed user
-		this.$http.get('me')
+		/*this.$http.get('me')
 			.then((resp) => {
 				if (resp.status == 200) {
 					this.userData = resp.data;
@@ -38,15 +36,17 @@ class App extends Vue {
 
 					this.getTransactions();
 				}
-			});
-	}
-
-	private getTransactions() {
-		this.$http.get(`users/${this.userData.id}/transactions`)
-			.then((resp) => {
-				this.$set('transactions', resp.data);
-			})
+			});*/
 	}
 }
 
-new App();
+var router = new VueRouter();
+
+router.map({
+	'/transactions': {
+		name: 'transactions',
+		component: tState
+	}
+});
+
+router.start(App, '#app');

@@ -1,15 +1,9 @@
 .ui.visible.sidebar.inverted.vertical.menu
 	div.item
-		h4.ui.grey.header {{user.name}}
+		h4.ui.grey.header Test
+	a.item(v-link="'transactions'") Transactions
 
-.ui.grid.container(v-if='loaded')
+.ui.grid.container
 	.ui.main.grid
 		.ui.two.column.row
-			table.ui.celled.striped.table
-				thead
-					tr
-						th(colspan='2') Transactions
-
-				tr(v-for='item in transactions')
-					td {{item.payee}}
-					td {{item.amount}}
+			router-view
