@@ -1,7 +1,15 @@
-div
-	h1(v-if='loaded').
-		Hello, {{user.name}}
-	table
-		tr(v-for='item in transactions')
-			td {{item.payee}}
-			td {{item.amount}}
+.ui.visible.sidebar.inverted.vertical.menu
+	div.item
+		h4.ui.grey.header {{user.name}}
+
+.ui.grid.container(v-if='loaded')
+	.ui.main.grid
+		.ui.two.column.row
+			table.ui.celled.striped.table
+				thead
+					tr
+						th(colspan='2') Transactions
+
+				tr(v-for='item in transactions')
+					td {{item.payee}}
+					td {{item.amount}}

@@ -3,9 +3,13 @@ html(lang="en")
 	head
 		title Web Pack Test
 
+		link(href='//cdn.jsdelivr.net/semantic-ui/2.1.8/semantic.min.css', rel='stylesheet')
 		link(href='main.css', rel='stylesheet')
+
+		meta(name='viewport', content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0')
 
 	body
 		div#app
 
-	script(type='text/javascript', src='main.js')
+	script(src='main.js')
+	script(defer, src='//cdn.jsdelivr.net/g/jquery@3.0.0-beta1,semantic-ui@2.1.8')

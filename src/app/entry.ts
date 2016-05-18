@@ -32,7 +32,9 @@ class App extends Vue {
 			.then((resp) => {
 				if (resp.status == 200) {
 					this.userData = resp.data;
+
 					this.$set('user', resp.data);
+					this.$set('loaded', true);
 
 					this.getTransactions();
 				}
@@ -43,7 +45,6 @@ class App extends Vue {
 		this.$http.get(`users/${this.userData.id}/transactions`)
 			.then((resp) => {
 				this.$set('transactions', resp.data);
-				this.$set('loaded', true);
 			})
 	}
 }
