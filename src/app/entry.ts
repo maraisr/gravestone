@@ -21,22 +21,19 @@ Vue.http.headers.common['Authorization'] = `Bearer ${Config.pocketsmithApi}`;
 class App extends Vue {
 	data(): any {
 		return {
-			loaded: false
-		};
+			loaded: false,
+			user: {}
+		}
 	}
 
 	ready(): void {
-		/*this.$http.get('me')
+		this.$http.get('me')
 			.then((resp) => {
 				if (resp.status == 200) {
-					this.userData = resp.data;
-
 					this.$set('user', resp.data);
 					this.$set('loaded', true);
-
-					this.getTransactions();
 				}
-			});*/
+			});
 	}
 }
 
