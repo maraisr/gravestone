@@ -9,12 +9,13 @@ module.exports = {
         filename: '[name].js'
     },
     resolve: {
-        extensions: ['', '.ts', '.js', '.pug']
+        extensions: ['', '.ts', '.js', '.pug', '.json']
     },
     module: {
         loaders: [
             { test: /\.ts?$/, loader: 'ts' },
-            { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/}
+			{ test: /\.json?$/, loader: 'json' },
+            { test: /\.pug?$/, loader: 'pug-html', exclude: /(src\/public)/ }
         ]
     },
     plugins: (function () {

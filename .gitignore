@@ -48,4 +48,4 @@ jspm_packages
 
 # app
 
-/src/app/config.ts
+app.config.json
