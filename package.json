@@ -1,4 +1,6 @@
 {
+	"name": "gravestone",
+	"version": "0.0.1",
 	"dependencies": {
 		"normalize-scss": "^4.2.1",
 		"vue": "^1.0.24",
