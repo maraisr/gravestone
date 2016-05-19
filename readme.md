@@ -1,9 +1,9 @@
-Webpack + Typescript Web App Boilerplate
-========================================
+Gravestone
+==========
 
 > Stay tuned, more coming!
 
-A collection of what I usually use when building web apps, didnt go all out and just use webpack, reason becuase sometimes you have multiple pages and other `public` like things you want built differently, hence `gulp`ing.. 
+A budgeting tool piggy backing off [PocketSmith](https://www.pocketsmith.com).
 
 But yeah: 
 - TypeScript
