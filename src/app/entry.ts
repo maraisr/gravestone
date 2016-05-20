@@ -9,6 +9,7 @@ import Auth from './stores/auth';
 
 import transState from './states/transactions/state';
 import loginState from './states/login/state';
+import dashState from './states/dashboard/state';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
@@ -26,7 +27,10 @@ class App extends Vue {
 		}
 	}
 
-	ready(): void {
+	created(): void {
+		if (!Auth.isLogged) {
+			this.$route.router.go({name: 'login'});
+		}
 	}
 }
 
@@ -37,6 +41,11 @@ router.map({
 		name: 'login',
 		component: loginState,
 		auth: false
+	},
+	'/dashboard': {
+		name: 'dashboard',
+		component: dashState,
+		auth: true
 	},
 	'/transactions': {
 		name: 'transactions',

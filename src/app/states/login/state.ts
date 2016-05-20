@@ -2,6 +2,7 @@ import * as Vue from 'vue';
 import Component from 'vue-class-component';
 
 import Config from '../../config';
+import Auth from '../../stores/auth';
 
 const scopes = [
 	'transactions.read',
@@ -22,13 +23,18 @@ export default class loginState extends Vue {
 	}
 
 	created() {
-		// check if `code` exists
-		// if so:
-		// POST https://api.pocketsmith.com/v2/oauth/access_token
-		// grant_type: authorization_code
-		// client_id: Config.client_id
-		// client_secret: Config.client_secret
-		// redirect_uri: Config.uri
-		// code: query.code
+		if (this.$route.query.code) {
+			this.$http.post('oauth/access_token', {
+				grant_type: 'authorization_code',
+				client_id: Config.app.client_id,
+				client_secret: Config.app.client_secret,
+				redirect_uri: Config.uri,
+				code: this.$route.query.code
+			})
+				.then((resp) => {
+					Auth.profile = resp;
+					this.$router.go({ name: 'dashboard' });
+				})
+		}
 	}
 }
