@@ -19,7 +19,11 @@ module.exports = {
         ]
     },
     plugins: (function () {
-        var returns = [];
+        var returns = [
+			new webpack.DefinePlugin({
+				__DEV__: JSON.stringify(JSON.parse((process.env.NODE_ENV != 'production')))
+			})
+		];
 
         if (process.env.NODE_ENV == 'production') {
             returns.push(new webpack.optimize.UglifyJsPlugin());
