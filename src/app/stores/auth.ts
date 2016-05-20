@@ -1,14 +1,14 @@
 class Auth {
-	get profile():any {
-		return JSON.parse(localStorage.getItem('authProfile'));
+	get jwt():any {
+		return JSON.parse(localStorage.getItem('authJwt'));
 	}
 
-	set profile(to: any) {
-		localStorage.setItem('authProfile', to);
+	set jwt(to: any) {
+		localStorage.setItem('authJwt', JSON.stringify(to));
 	}
 
 	get isLogged(): boolean {
-		return (localStorage.getItem('authProfile') ? true : false);
+		return (localStorage.getItem('authJwt') ? true : false);
 	}
 }
 

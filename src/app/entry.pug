@@ -1,6 +1,6 @@
 .ui.visible.sidebar.inverted.vertical.menu(v-if='logged')
 	div.item
-		h4.ui.grey.header Test
+		h4.ui.grey.header {{user.name}}
 	a.item(v-link="'transactions'") Transactions
 
 .ui.grid.container

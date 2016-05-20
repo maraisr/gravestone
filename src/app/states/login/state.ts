@@ -15,10 +15,9 @@ const scopes = [
 	template: require('./index.pug')
 })
 export default class loginState extends Vue {
-
 	data() {
 		return {
-			authLoginUrl: `https://my.pocketsmith.com/oauth/authorize?response_type=code&client_id=${Config.app.client_id}&scope=${scopes.join(' ')}&redirect_uri=${Config.uri}login`
+			authLoginUrl: `https://my.pocketsmith.com/oauth/authorize?response_type=code&client_id=${Config.app.client_id}&scope=${scopes.join(' ')}&redirect_uri=${encodeURIComponent(`${Config.uri}login`)}`
 		}
 	}
 
@@ -28,12 +27,11 @@ export default class loginState extends Vue {
 				grant_type: 'authorization_code',
 				client_id: Config.app.client_id,
 				client_secret: Config.app.client_secret,
-				redirect_uri: Config.uri,
+				redirect_uri: Config.uri + 'login',
 				code: this.$route.query.code
 			})
 				.then((resp) => {
-					Auth.profile = resp;
-					this.$router.go({ name: 'dashboard' });
+					Auth.jwt = resp.data;
 				})
 		}
 	}
