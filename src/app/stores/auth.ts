@@ -1,3 +1,5 @@
+// TODO: Add vuex
+
 class Auth {
 	get jwt():any {
 		return JSON.parse(localStorage.getItem('authJwt'));
